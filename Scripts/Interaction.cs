@@ -69,6 +69,10 @@ public partial class Interaction : VBoxContainer
 					break;
 				}
 			}
+			
+			previousNode = null;
+			selectorLabel.Visible = false;
+			ClearNodes();
 		}
 
 		if (Input.IsActionJustReleased("interactCycle"))

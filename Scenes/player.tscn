@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="2_i3pqv"]
-[ext_resource type="Script" path="res://Scripts/Timer.cs" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://d1djpkadl6gs" path="res://Scripts/Timer.cs" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dh8ammpyxecbg" path="res://Scripts/Interaction.cs" id="4_vgqql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fkybt"]
@@ -33,14 +33,18 @@ target_position = Vector2(96, 0)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SelectorLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Interaction" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 offset_left = 1000.0
 offset_top = 594.0
-offset_right = 1040.0
-offset_bottom = 634.0
+offset_right = 2000.0
+offset_bottom = 617.0
+text = ">"
+
+[node name="Interaction" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 1012.0
+offset_top = 594.0
+offset_right = 1012.0
+offset_bottom = 594.0
 script = ExtResource("4_vgqql")
 
 [node name="AUDIOCUEarea" type="Area2D" parent="."]
