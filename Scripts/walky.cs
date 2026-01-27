@@ -13,7 +13,7 @@ public partial class walky : CharacterBody2D
 
 	public override void _Ready()
 	{
-		inventory = GetNode<InventorySlot>("Inventory");
+		//inventory = GetNode<InventorySlot>("Inventory");
 	}                                                                
 	
 	public void GetInput()

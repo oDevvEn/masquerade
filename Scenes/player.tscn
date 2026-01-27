@@ -1,21 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4a5njexoyfhf"]
+[gd_scene load_steps=7 format=3 uid="uid://c4a5njexoyfhf"]
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="2_i3pqv"]
-[ext_resource type="Script" uid="uid://d1djpkadl6gs" path="res://Scripts/Timer.cs" id="3_6t5aa"]
+[ext_resource type="Script" path="res://Scripts/Timer.cs" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://dh8ammpyxecbg" path="res://Scripts/Interaction.cs" id="4_vgqql"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fkybt"]
+radius = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
+Speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_hqtel")
+shape = SubResource("CircleShape2D_fkybt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_i3pqv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -26,5 +31,21 @@ script = ExtResource("3_6t5aa")
 [node name="AUDIOCUE" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vgqql")
 disabled = true
+
+[node name="InteractionRaycast" type="RayCast2D" parent="."]
+target_position = Vector2(96, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SelectorLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Interaction" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 1000.0
+offset_top = 594.0
+offset_right = 1040.0
+offset_bottom = 634.0
+script = ExtResource("4_vgqql")
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]

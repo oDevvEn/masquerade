@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://26l7uj38yrds"
-path="res://.godot/imported/plainfloor.png-6c53eecb8438530b29ef6623fd274370.ctex"
+path="res://.godot/imported/plainfloor.png-06373c57dabd86f39f163da1608914cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Rooms/Main/plainfloor.png"
-dest_files=["res://.godot/imported/plainfloor.png-6c53eecb8438530b29ef6623fd274370.ctex"]
+source_file="res://Rooms/Art/plainfloor.png"
+dest_files=["res://.godot/imported/plainfloor.png-06373c57dabd86f39f163da1608914cc.ctex"]
 
 [params]
 

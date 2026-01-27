@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://6yfqspgdtufc"]
+
+[ext_resource type="Texture2D" uid="uid://dx0r3r0tejsmw" path="res://Rooms/Art/plaindoor.png" id="1_gqpx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s4e8"]
+size = Vector2(128, 32)
+
+[node name="Door" type="Marker2D"]
+metadata/open = false
+metadata/type = "Door"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(64, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("1_gqpx0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(64, 0)
+shape = SubResource("RectangleShape2D_1s4e8")
