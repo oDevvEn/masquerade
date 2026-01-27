@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4a5njexoyfhf"]
+
+[ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="2_i3pqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hqtel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i3pqv")
