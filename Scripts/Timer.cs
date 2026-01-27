@@ -17,7 +17,7 @@ public partial class Timer : Godot.Timer
 	void _on_timer_timeout()
 	{
 		GD.Print("HIII");
-		var range = GetNode<CollisionShape2D>("../AUDIOCUE");
+		var range = GetNode<CollisionShape2D>("../AUDIOCUEarea/AUDIOCUE");
 		range.Disabled = true;
 	}
 }

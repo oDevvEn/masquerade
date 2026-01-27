@@ -3,7 +3,6 @@ using System;
 
 public partial class walky : CharacterBody2D
 {
-	[Export] 
 	public int Speed { get; set; } = 150;
 	public float AudioMultiplier { get; set; } = 1f;
 
@@ -52,7 +51,7 @@ public partial class walky : CharacterBody2D
 				|| Input.IsActionPressed("left")
 					|| Input.IsActionPressed("right"))
 		{
-			var range = GetNode<CollisionShape2D>("AUDIOCUE");
+			var range = GetNode<CollisionShape2D>("AUDIOCUEarea/AUDIOCUE");
 			range.Scale = new Vector2(this.Scale.X * currentSpeed /5, this.Scale.Y * currentSpeed /5);
 			range.Disabled = false;
 			var timer = GetNode<Timer>("Timer");
