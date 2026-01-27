@@ -4,7 +4,7 @@ using System;
 public partial class walky : CharacterBody2D
 {
 	[Export] 
-	public int Speed { get; set; } = 400;
+	public int Speed { get; set; } = 150;
 	public float AudioMultiplier { get; set; } = 1f;
 	
 	
@@ -14,41 +14,52 @@ public partial class walky : CharacterBody2D
 		LookAt(GetGlobalMousePosition());
 		Vector2 inputDirection = Input.GetVector("left", "right", "forward", "back");
 		//GD.Print(Transform.X.AngleTo(inputDirection));
-		float SpeedMulti = Math.Clamp((GlobalPosition.DistanceTo(GetGlobalMousePosition()) / 500), 0f, 400f);
+		float speedSlow = Math.Clamp((Speed / 1.5f), 0, 150);
+		float speedCrouch = Math.Clamp(((Speed/2.5f)), 0, 150);
+		float currentSpeed = 0;
 		//GD.Print(Speed);
 		if (Math.Abs(Transform.X.AngleTo(inputDirection)) > Math.PI / 3f)
-			Velocity = inputDirection * Math.Clamp((Speed/3f / SpeedMulti), 0, 400);
+		{
+			currentSpeed = speedSlow;
+			Velocity = inputDirection * speedSlow;
+		}
+		else if (Input.IsActionPressed("sneak"))
+		{
+			currentSpeed = speedCrouch;
+			Velocity = inputDirection * speedCrouch;
+		}
 		else
-			Velocity = inputDirection * Speed;
+		{
+			currentSpeed = Speed;
+			Velocity = inputDirection * Speed;    
+		}
+			
 		
 		//GD.Print(Math.Clamp((Speed/3f/SpeedMulti), 0, 400));
 		
-		var thing = new CollisionShape2D();
-		thing.Name = "AUDIOCUE";
-		thing.Shape = new CircleShape2D();
+		
+		
 
-
-		Root.AddChild(thing);
-		var ExpireAudio = GetNode("ExpireAudio");
-		thing.Scale = new Vector2(this.Scale.X*2, this.Scale.Y*2);
-		thing.Position = Vector2.Zero;
-
-
+		if (Input.IsActionPressed("forward")
+			|| Input.IsActionPressed("back")
+				|| Input.IsActionPressed("left")
+					|| Input.IsActionPressed("right"))
+		{
+			var range = GetNode<CollisionShape2D>("AUDIOCUE");
+			range.Scale = new Vector2(this.Scale.X * currentSpeed /5, this.Scale.Y * currentSpeed /5);
+			range.Disabled = false;
+			var timer = GetNode<Timer>("Timer");
+			if (timer.IsStopped())
+				timer.Start();
+		}
 
 	}
-
-	void _on_timer_timeout()
-	{
-		GD.Print("HIII");
-		this.FindChild("AUDIOCUE").Free();
-		this.FindChild("Timer").Free();
-	}
-
-	
 
 	public override void _PhysicsProcess(double delta)
 	{
+		
 		GetInput();
 		MoveAndSlide();
+		
 	}
 }
