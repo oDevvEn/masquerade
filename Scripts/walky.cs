@@ -6,8 +6,15 @@ public partial class walky : CharacterBody2D
 	[Export] 
 	public int Speed { get; set; } = 150;
 	public float AudioMultiplier { get; set; } = 1f;
-	
-	
+
+	public InventorySlot inventory;     // inventory.Additem(Item)/.RemoveItem(index),
+	// inventory made of like idk 5 slots, make a hotbar for items thats just an array ig
+	// zzxczxczxc
+
+	public override void _Ready()
+	{
+		inventory = GetNode<InventorySlot>("Inventory");
+	}                                                                
 	
 	public void GetInput()
 	{
