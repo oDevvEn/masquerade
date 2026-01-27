@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7j43ogdwvso1"]
+
+[ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="2_h2yge"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0e48y"]
+
+[node name="Main" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(1.335, 1.335)
+script = ExtResource("1_0xm2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_h2yge")
