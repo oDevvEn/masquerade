@@ -22,6 +22,7 @@ public partial class walky : CharacterBody2D
 		//GD.Print(Transform.X.AngleTo(inputDirection));
 		float speedSlow = Math.Clamp((Speed / 1.5f), 0, 150);
 		float speedCrouch = Math.Clamp(((Speed/2.5f)), 0, 150);
+		float speedRun = Math.Clamp(((Speed*2)/1.1f), 0, 250);
 		float currentSpeed = 0;
 		//GD.Print(Speed);
 		if (Math.Abs(Transform.X.AngleTo(inputDirection)) > Math.PI / 3f)
@@ -33,6 +34,11 @@ public partial class walky : CharacterBody2D
 		{
 			currentSpeed = speedCrouch;
 			Velocity = inputDirection * speedCrouch;
+		}
+		else if (Input.IsActionPressed("run"))
+		{
+			currentSpeed = speedRun;
+			Velocity = inputDirection * speedRun;
 		}
 		else
 		{
