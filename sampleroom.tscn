@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bipl0rfpnd4u5"]
+[gd_scene load_steps=3 format=3 uid="uid://bipl0rfpnd4u5"]
 
 [ext_resource type="PackedScene" uid="uid://c4a5njexoyfhf" path="res://Scenes/player.tscn" id="1_te3jo"]
+[ext_resource type="Texture2D" uid="uid://6wv1qwksx0m6" path="res://Assets/Light.png" id="2_kl3aa"]
 
 [node name="Sampleroom" type="TileMapLayer"]
 
 [node name="Player" parent="." instance=ExtResource("1_te3jo")]
 position = Vector2(349, 142)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 3
+shadow_enabled = true
+texture = ExtResource("2_kl3aa")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+light_mask = 3
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = ExtResource("2_kl3aa")
