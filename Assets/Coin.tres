@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://yuunvd02oba3"]
+
+[ext_resource type="Script" uid="uid://n5exd1ib6lhe" path="res://Struct/ItemData.cs" id="1_g71by"]
+
+[resource]
+script = ExtResource("1_g71by")
+itemName = "Coin"
+metadata/_custom_type_script = "uid://n5exd1ib6lhe"
