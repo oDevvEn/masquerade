@@ -43,6 +43,7 @@ public partial class Breathing : ColorRect
 		{
 			float distance = Mathf.Abs(selector.Position.X + 5f - (areaPos + areaWidth / 2f)) / (areaWidth + 16f);
 			GD.Print(distance);
+			var audio = player.GetNode<CollisionShape2D>("AUDIOCUEarea/AUDIOCUE");
 			if (distance > 1f)
 			{
 				Visible = false;
@@ -50,10 +51,16 @@ public partial class Breathing : ColorRect
 				breathing = false;
 				wardrobeCamera.Enabled = false;
 				playerCamera.Enabled = true;
+				audio.Position = Vector2.Zero;
+
 			}
 			else
 			{
 				// logic
+				audio.Disabled = false;
+				audio.Scale = new Vector2(50 * distance , 50 * distance);
+				audio.GlobalPosition = GetTree().CurrentScene.GetNode<Sprite2D>("Wardrobe").GlobalPosition;
+
 			}
 			
 			

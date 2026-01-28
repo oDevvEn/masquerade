@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://pyoi527uxg8g"]
+[gd_scene load_steps=2 format=3 uid="uid://pyoi527uxg8g"]
+
+[ext_resource type="Script" uid="uid://cjdve34e6bptl" path="res://Scenes/PlayButton.cs" id="1_tt5f1"]
 
 [node name="MainMenu" type="Control"]
 top_level = true
@@ -12,7 +14,18 @@ grow_vertical = 2
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 11.0
-offset_top = 21.0
-offset_right = 39.0
-offset_bottom = 30.0
+offset_left = 224.0
+offset_top = 183.0
+offset_right = 604.0
+offset_bottom = 358.0
+script = ExtResource("1_tt5f1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 51.0
+offset_right = 586.0
+offset_bottom = 165.0
+text = "hi gmae making working yeah"
+
+[connection signal="button_up" from="Button" to="Button" method="ButtonPressed"]
