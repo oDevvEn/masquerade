@@ -1,12 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4a5njexoyfhf"]
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://bnvp76up0kb12" path="res://Assets/Sprite-0002.png" id="2_vgqql"]
 [ext_resource type="Script" uid="uid://d1djpkadl6gs" path="res://Scripts/Timer.cs" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dh8ammpyxecbg" path="res://Scripts/Interaction.cs" id="4_vgqql"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fkybt"]
-radius = 56.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqql"]
+radius = 24.0
+height = 72.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
 
@@ -14,10 +15,13 @@ radius = 56.0
 script = ExtResource("1_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fkybt")
+position = Vector2(6, -3)
+shape = SubResource("CapsuleShape2D_vgqql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_i3pqv")
+rotation = 1.5707964
+scale = Vector2(4, 4)
+texture = ExtResource("2_vgqql")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
