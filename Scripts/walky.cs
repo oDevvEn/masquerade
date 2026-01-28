@@ -6,12 +6,14 @@ public partial class walky : CharacterBody2D
 	public int Speed { get; set; } = 150;
 	public float AudioMultiplier { get; set; } = 1f;
 
+	private Breathing breathing;
 	public PlayerInventory inventory;     // inventory.Additem(Item)/.RemoveItem(index),
 	// inventory made of like idk 5 slots, make a hotbar for items thats just an array ig
 	// 
 
 	public override void _Ready()
 	{
+		breathing = GetNode<ColorRect>("CanvasLayer/Breathing") as Breathing;
 		inventory = GetNode<Node>("Inventory") as PlayerInventory;
 	}                                                                
 	
@@ -80,9 +82,12 @@ public partial class walky : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		
-		GetInput();
-		MoveAndSlide();
+
+		if (!breathing.breathing)
+		{
+			GetInput();
+			MoveAndSlide();
+		}
 		
 	}
 }

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyj0n36ckhd12"]
+
+[ext_resource type="Texture2D" uid="uid://ddp2jlmaw4ddi" path="res://Rooms/Art/plainwardrobe.png" id="1_0dol4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qy74y"]
+size = Vector2(24, 25)
+
+[node name="Wardrobe" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_0dol4")
+metadata/type = "Wardrobe"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_qy74y")

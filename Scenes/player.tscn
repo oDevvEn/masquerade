@@ -1,14 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4a5njexoyfhf"]
+[gd_scene load_steps=11 format=3 uid="uid://c4a5njexoyfhf"]
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bnvp76up0kb12" path="res://Assets/Sprite-0002.png" id="2_fkybt"]
 [ext_resource type="Script" uid="uid://d1djpkadl6gs" path="res://Scripts/Timer.cs" id="3_6t5aa"]
 [ext_resource type="Script" uid="uid://dh8ammpyxecbg" path="res://Scripts/Interaction.cs" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://bei2t1kqut48t" path="res://Struct/PlayerInventory.cs" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://0rkgopiqfjve" path="res://Scripts/Breathing.cs" id="5_x3wgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3wgy"]
 radius = 24.45
 height = 72.0
+
+[sub_resource type="Gradient" id="Gradient_3smsa"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.49242425, 0.9621212, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8erm5"]
+gradient = SubResource("Gradient_3smsa")
+width = 576
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
 
@@ -50,6 +60,25 @@ offset_top = 594.0
 offset_right = 1052.0
 offset_bottom = 634.0
 script = ExtResource("4_vgqql")
+
+[node name="Breathing" type="ColorRect" parent="CanvasLayer"]
+offset_left = 672.0
+offset_top = 864.0
+offset_right = 1248.0
+offset_bottom = 904.0
+script = ExtResource("5_x3wgy")
+
+[node name="AreaVisual" type="TextureRect" parent="CanvasLayer/Breathing"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture1D_8erm5")
+
+[node name="Selector" type="ColorRect" parent="CanvasLayer/Breathing"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 40.0
+color = Color(1, 0, 0, 1)
 
 [node name="AUDIOCUEarea" type="Area2D" parent="."]
 collision_layer = 0

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bipl0rfpnd4u5"]
+[gd_scene load_steps=6 format=4 uid="uid://bipl0rfpnd4u5"]
 
 [ext_resource type="PackedScene" uid="uid://c4a5njexoyfhf" path="res://Scenes/player.tscn" id="1_te3jo"]
 [ext_resource type="Texture2D" uid="uid://6wv1qwksx0m6" path="res://Assets/Light.png" id="2_kl3aa"]
 [ext_resource type="TileSet" uid="uid://dd3ehn0lj5knm" path="res://Rooms/TileMap.tres" id="3_wivgg"]
 [ext_resource type="PackedScene" uid="uid://6yfqspgdtufc" path="res://Rooms/Furniture/door.tscn" id="4_62ttd"]
+[ext_resource type="PackedScene" uid="uid://cyj0n36ckhd12" path="res://Rooms/Furniture/wardrobe.tscn" id="5_ses0e"]
 
 [node name="Sampleroom" type="TileMapLayer"]
 
@@ -33,3 +34,6 @@ rotation = 1.5707964
 
 [node name="Player" parent="." instance=ExtResource("1_te3jo")]
 position = Vector2(349, 142)
+
+[node name="Wardrobe" parent="." instance=ExtResource("5_ses0e")]
+position = Vector2(832, 64)

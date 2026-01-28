@@ -5,6 +5,9 @@ public partial class Interaction : VBoxContainer
 {
 	private RayCast2D raycast;
 	private Label selectorLabel;
+	private CharacterBody2D player;
+	private Breathing breathing;
+	private Camera2D camera;
 	
 	private Node2D previousNode;
 	private int selected;
@@ -15,12 +18,15 @@ public partial class Interaction : VBoxContainer
 		GD.Print(GetTree().CurrentScene);
 		raycast = GetNode<RayCast2D>("../../InteractionRaycast");
 		selectorLabel = GetNode<Label>("../SelectorLabel");
+		player = (CharacterBody2D)GetParent().GetParent();
+		breathing = GetNode<ColorRect>("../Breathing") as Breathing;
+		camera = GetNode<Camera2D>("../../Camera2D");
 	}
 
 	
 	public override void _Process(double delta)
 	{
-		if (raycast.IsColliding())
+		if (raycast.IsColliding() && !breathing.breathing)
 		{
 			Node2D collision = (Node2D)((Node)raycast.GetCollider()).GetParent();
 			if (previousNode != collision)
@@ -37,6 +43,15 @@ public partial class Interaction : VBoxContainer
 					{
 						Label label = new Label();
 						label.Text = $"{((bool)collision.GetMeta("open") ? "Close" : "Open")} Door";
+						AddChild(label);
+						maxSelected = 1;
+						break;
+					}
+
+					case "Wardrobe":
+					{
+						Label label = new Label();
+						label.Text = $"Enter Wardrobe";
 						AddChild(label);
 						maxSelected = 1;
 						break;
@@ -59,13 +74,21 @@ public partial class Interaction : VBoxContainer
 
 		if (Input.IsActionJustReleased("interact") && previousNode != null)
 		{
-			switch ((string)previousNode.GetMeta("type"))
+			switch ((string)previousNode.GetMeta("type", "error"))
 			{
 				case "Door":
 				{
 					bool open = (bool)previousNode.GetMeta("open");
 					previousNode.Rotate(open ? -Mathf.Pi / 2f : Mathf.Pi / 2f);
 					previousNode.SetMeta("open", !open);
+					break;
+				}
+				case "Wardrobe":
+				{
+					player.Visible = false;
+					camera.GlobalPosition = previousNode.Position;
+					breathing.breathing = true;
+					breathing.Visible = true;
 					break;
 				}
 			}
