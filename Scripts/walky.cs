@@ -11,7 +11,7 @@ public partial class walky : CharacterBody2D
 	// inventory made of like idk 5 slots, make a hotbar for items thats just an array ig
 	//  
 
-	public float ConeAngle { get; set; } = 45f;
+	public float ConeAngle { get; set; } = 60f;
 	public float Range = 3500;
 
 	public override void _Process(double delta)
@@ -38,7 +38,7 @@ public partial class walky : CharacterBody2D
 			
 			float angle = Mathf.RadToDeg(forward.AngleTo(toEnemy.Normalized()));
 
-			if (angle < ConeAngle)
+			if (MathF.Abs(angle) < ConeAngle)
 			{
 				if (LineOfSight(bad.GlobalPosition))
 				{

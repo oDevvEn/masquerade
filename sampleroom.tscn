@@ -1,26 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://bipl0rfpnd4u5"]
+[gd_scene load_steps=8 format=4 uid="uid://bipl0rfpnd4u5"]
 
 [ext_resource type="PackedScene" uid="uid://c4a5njexoyfhf" path="res://Scenes/player.tscn" id="1_te3jo"]
-[ext_resource type="Texture2D" uid="uid://6wv1qwksx0m6" path="res://Assets/Light.png" id="2_kl3aa"]
 [ext_resource type="TileSet" uid="uid://dd3ehn0lj5knm" path="res://Rooms/TileMap.tres" id="3_wivgg"]
 [ext_resource type="PackedScene" uid="uid://6yfqspgdtufc" path="res://Rooms/Furniture/door.tscn" id="4_62ttd"]
-[ext_resource type="PackedScene" uid="uid://cyj0n36ckhd12" path="res://Rooms/Furniture/wardrobe.tscn" id="5_ses0e"]
 [ext_resource type="Texture2D" uid="uid://c12spfv7j6mlo" path="res://Assets/LightCOne.jpg" id="4_ses0e"]
 [ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="5_ses0e"]
 [ext_resource type="Script" uid="uid://cc2dojak1tuse" path="res://Scripts/Badguy.cs" id="6_osdyg"]
+[ext_resource type="PackedScene" path="res://Rooms/Furniture/wardrobe.tscn" id="8_k4fil"]
 
 [node name="Sampleroom" type="TileMapLayer"]
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-light_mask = 3
-shadow_enabled = true
-texture = ExtResource("2_kl3aa")
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-light_mask = 3
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("2_kl3aa")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 light_mask = 3
@@ -38,13 +26,10 @@ rotation = 1.5707964
 [node name="Player" parent="." instance=ExtResource("1_te3jo")]
 position = Vector2(349, 142)
 
-[node name="Wardrobe" parent="." instance=ExtResource("5_ses0e")]
-position = Vector2(832, 64)
-
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
-position = Vector2(-0.9999542, 0.99999666)
+position = Vector2(3.258666, 4.9999847)
 rotation = -1.5707964
-scale = Vector2(3.4724104, 3.4417477)
+scale = Vector2(7.050564, 3.827945)
 energy = 1.39
 shadow_enabled = true
 texture = ExtResource("4_ses0e")
@@ -58,9 +43,12 @@ script = ExtResource("6_osdyg")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(-2, 1)
-energy = 0.82
+energy = 0.87
 blend_mode = 1
 shadow_enabled = true
 shadow_filter = 2
 shadow_item_cull_mask = 0
 max_distance = 10150.0
+
+[node name="Wardrobe" parent="." instance=ExtResource("8_k4fil")]
+position = Vector2(933, 76)
