@@ -38,10 +38,15 @@ offset = Vector2(0, 63.17)
 texture_scale = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Enemies"]]
-position = Vector2(774, 103)
+position = Vector2(99, 176)
 scale = Vector2(4, 4)
 texture = ExtResource("5_pnscv")
 script = ExtResource("6_osdyg")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Sprite2D"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
+target_position = Vector2(0, -32)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(-2, 1)
