@@ -9,7 +9,67 @@ public partial class walky : CharacterBody2D
 	private Breathing breathing;
 	public PlayerInventory inventory;     // inventory.Additem(Item)/.RemoveItem(index),
 	// inventory made of like idk 5 slots, make a hotbar for items thats just an array ig
-	// 
+	//  
+
+	public float ConeAngle { get; set; } = 45f;
+	public float Range = 3500;
+
+	public override void _Process(double delta)
+	{
+		Observe();
+	}
+
+	private void Observe()
+	{
+		var objects = GetTree().GetNodesInGroup("Enemies");
+		foreach (Node node in objects)
+		{
+			Badguy bad = node as Badguy;
+
+			Vector2 toEnemy = bad.GlobalPosition - GlobalPosition;
+
+			if (toEnemy.Length() > Range)
+			{
+				bad.Hide();
+				continue;
+			}
+			
+			Vector2 forward = (GetGlobalMousePosition() - GlobalPosition).Normalized();
+			
+			float angle = Mathf.RadToDeg(forward.AngleTo(toEnemy.Normalized()));
+
+			if (angle < ConeAngle)
+			{
+				if (LineOfSight(bad.GlobalPosition))
+				{
+					bad.Exposed();
+				}
+				else
+				{
+					bad.Hide();
+				}
+			}
+			else
+			{
+				bad.Hide();
+			}
+		}
+	}
+
+	public bool LineOfSight(Vector2 pos)
+	{
+		var space = GetWorld2D().DirectSpaceState;
+
+		var query = PhysicsRayQueryParameters2D.Create(
+			GlobalPosition,
+			pos
+		);
+
+		query.CollisionMask = 1;
+		var result = space.IntersectRay((query));
+
+		return result.Count == 0;
+	}
 
 	public override void _Ready()
 	{
