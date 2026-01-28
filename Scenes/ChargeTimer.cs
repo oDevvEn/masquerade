@@ -15,6 +15,6 @@ public partial class Timer : Godot.Timer
 
 	void _on_timer_time()
 	{
-		GetTree().GetRoot().GetNode<Phone>("Phone").Battery += 0.01f;
+		GetTree().GetRoot().GetNode<Phone>("Phone").Charge();
 	}
 }
