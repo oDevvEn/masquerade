@@ -43,7 +43,7 @@ ignore_time_scale = true
 script = ExtResource("3_6t5aa")
 
 [node name="InteractionRaycast" type="RayCast2D" parent="."]
-target_position = Vector2(96, 0)
+target_position = Vector2(128, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
