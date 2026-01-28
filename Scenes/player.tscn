@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4a5njexoyfhf"]
+[gd_scene load_steps=12 format=3 uid="uid://c4a5njexoyfhf"]
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bnvp76up0kb12" path="res://Assets/Sprite-0002.png" id="2_fkybt"]
 [ext_resource type="Script" uid="uid://d1djpkadl6gs" path="res://Scripts/Timer.cs" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cs82hb0clm47s" path="res://Scenes/CanvasLayer.cs" id="4_8erm5"]
 [ext_resource type="Script" uid="uid://dh8ammpyxecbg" path="res://Scripts/Interaction.cs" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://bei2t1kqut48t" path="res://Struct/PlayerInventory.cs" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://0rkgopiqfjve" path="res://Scripts/Breathing.cs" id="5_x3wgy"]
@@ -46,6 +47,7 @@ script = ExtResource("3_6t5aa")
 target_position = Vector2(128, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_8erm5")
 
 [node name="SelectorLabel" type="Label" parent="CanvasLayer"]
 offset_left = 1000.0
