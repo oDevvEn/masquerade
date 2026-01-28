@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp51ruyqnba48"]
+
+[ext_resource type="Script" uid="uid://dm1spwfukiy7i" path="res://Struct/Charger.cs" id="1_iabbt"]
+[ext_resource type="Script" uid="uid://dfk5hxag0ouvi" path="res://Scenes/ChargeTimer.cs" id="2_l50vv"]
+[ext_resource type="Texture2D" uid="uid://by476y124ncgy" path="res://Assets/Sprite-0005.png" id="3_l50vv"]
+
+[node name="Charger" type="Node2D"]
+script = ExtResource("1_iabbt")
+
+[node name="Timer" type="Timer" parent="."]
+ignore_time_scale = true
+script = ExtResource("2_l50vv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_l50vv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_time"]

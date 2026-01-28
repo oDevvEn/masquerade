@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://bipl0rfpnd4u5"]
+[gd_scene load_steps=9 format=4 uid="uid://bipl0rfpnd4u5"]
 
 [ext_resource type="PackedScene" uid="uid://c4a5njexoyfhf" path="res://Scenes/player.tscn" id="1_te3jo"]
 [ext_resource type="TileSet" uid="uid://dd3ehn0lj5knm" path="res://Rooms/TileMap.tres" id="3_wivgg"]
 [ext_resource type="PackedScene" uid="uid://6yfqspgdtufc" path="res://Rooms/Furniture/door.tscn" id="4_62ttd"]
 [ext_resource type="Texture2D" uid="uid://c12spfv7j6mlo" path="res://Assets/LightCOne.jpg" id="4_ses0e"]
-[ext_resource type="Texture2D" uid="uid://brbjswovcauw0" path="res://icon.svg" id="5_ses0e"]
+[ext_resource type="Texture2D" uid="uid://cc4imrwo1ju8j" path="res://Assets/Sprite-0009.png" id="5_pnscv"]
 [ext_resource type="Script" uid="uid://cc2dojak1tuse" path="res://Scripts/Badguy.cs" id="6_osdyg"]
 [ext_resource type="PackedScene" uid="uid://cyj0n36ckhd12" path="res://Rooms/Furniture/wardrobe.tscn" id="8_k4fil"]
-[ext_resource type="Texture2D" uid="uid://bhhmq3t0ihtub" path="res://Assets/Sprite-0004.png" id="8_pnscv"]
-[ext_resource type="Texture2D" uid="uid://xcfmed7t0nti" path="res://Assets/LightSprite.png" id="9_behxx"]
+[ext_resource type="PackedScene" uid="uid://dx16si00uovjx" path="res://Rooms/Furniture/Lamp.tscn" id="8_pnscv"]
 
 [node name="Sampleroom" type="Node2D"]
 
@@ -40,7 +39,8 @@ texture_scale = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Enemies"]]
 position = Vector2(774, 103)
-texture = ExtResource("5_ses0e")
+scale = Vector2(4, 4)
+texture = ExtResource("5_pnscv")
 script = ExtResource("6_osdyg")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -55,14 +55,5 @@ max_distance = 10150.0
 [node name="Wardrobe" parent="." instance=ExtResource("8_k4fil")]
 position = Vector2(933, 76)
 
-[node name="Sprite0004" type="Sprite2D" parent="."]
-position = Vector2(1076, 78)
-scale = Vector2(4, 4)
-texture = ExtResource("8_pnscv")
-
-[node name="PointLight2D" type="PointLight2D" parent="Sprite0004"]
-position = Vector2(0.24999237, 1.2499924)
-scale = Vector2(0.24550782, 0.24453123)
-blend_mode = 2
-shadow_enabled = true
-texture = ExtResource("9_behxx")
+[node name="Lamp" parent="." instance=ExtResource("8_pnscv")]
+position = Vector2(1058, 68)

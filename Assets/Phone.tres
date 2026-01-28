@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bsfgn8t4amfqs"]
+
+[ext_resource type="Texture2D" uid="uid://dyuvjx1y25rka" path="res://Assets/Sprite-0007.png" id="1_nijv2"]
+[ext_resource type="Script" uid="uid://n5exd1ib6lhe" path="res://Struct/ItemData.cs" id="1_nvek0"]
+
+[resource]
+script = ExtResource("1_nvek0")
+itemName = "Phone"
+itemDescription = "A phone able to make calls"
+itemIcon = ExtResource("1_nijv2")
+metadata/_custom_type_script = "uid://n5exd1ib6lhe"
