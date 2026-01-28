@@ -7,7 +7,8 @@ public partial class Breathing : ColorRect
 	private ColorRect selector;
 	private RandomNumberGenerator randamiser;
 	private CharacterBody2D player;
-	private Camera2D camera;
+	private Camera2D playerCamera;
+	public Camera2D wardrobeCamera;
 	
 	
 	public bool breathing = false;
@@ -23,6 +24,7 @@ public partial class Breathing : ColorRect
 		randamiser = new RandomNumberGenerator();
 		player = (CharacterBody2D)GetParent().GetParent();
 		selector.Position = new Vector2(randamiser.RandfRange(0f, 568f), 0f);
+		playerCamera = player.GetNode<Camera2D>("Camera2D");
 	}
 	
 	
@@ -36,17 +38,18 @@ public partial class Breathing : ColorRect
 			selectorVelocity *= -1f;
 			selector.Position = new Vector2(Mathf.Clamp(selector.Position.X, 1f, 567f), 0f);
 		}
-
+		
 		if (Input.IsActionJustPressed("interact"))
 		{
-			float distance = Mathf.Abs(selector.Position.X + 5f - areaPos + areaWidth / 2f) / (areaWidth + 16f);
+			float distance = Mathf.Abs(selector.Position.X + 5f - (areaPos + areaWidth / 2f)) / (areaWidth + 16f);
 			GD.Print(distance);
 			if (distance > 1f)
 			{
 				Visible = false;
-				breathing = false;
 				player.Visible = true;
-				camera.Position = Vector2.Zero;
+				breathing = false;
+				wardrobeCamera.Enabled = false;
+				playerCamera.Enabled = true;
 			}
 			else
 			{
@@ -54,7 +57,7 @@ public partial class Breathing : ColorRect
 			}
 			
 			
-			areaWidth = randamiser.RandfRange(48f, 256f);
+			areaWidth = randamiser.RandfRange(64f, 256f);
 			((GradientTexture1D)areaVisual.Texture).Width = (int)areaWidth;
 			areaVisual.Size = new Vector2(areaWidth, 40f);
 			areaPos = randamiser.RandfRange(0f, 576f - areaWidth);

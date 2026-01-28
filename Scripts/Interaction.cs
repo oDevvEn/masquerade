@@ -26,7 +26,9 @@ public partial class Interaction : VBoxContainer
 	
 	public override void _Process(double delta)
 	{
-		if (raycast.IsColliding() && !breathing.breathing)
+		if (breathing.breathing) return;
+		
+		if (raycast.IsColliding())
 		{
 			Node2D collision = (Node2D)((Node)raycast.GetCollider()).GetParent();
 			if (previousNode != collision)
@@ -86,7 +88,10 @@ public partial class Interaction : VBoxContainer
 				case "Wardrobe":
 				{
 					player.Visible = false;
-					camera.GlobalPosition = previousNode.Position;
+					camera.Enabled = false;
+					Camera2D wardrobeCamera = previousNode.GetNode<Camera2D>("Camera2D");
+					breathing.wardrobeCamera = wardrobeCamera;
+					wardrobeCamera.Enabled = true;
 					breathing.breathing = true;
 					breathing.Visible = true;
 					break;
