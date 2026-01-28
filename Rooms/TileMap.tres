@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://dd3ehn0lj5knm"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dd3ehn0lj5knm"]
 
 [ext_resource type="Texture2D" uid="uid://cuiys36rimdop" path="res://Rooms/Art/plainwall.png" id="1_2r0lw"]
 [ext_resource type="Texture2D" uid="uid://26l7uj38yrds" path="res://Rooms/Art/plainfloor.png" id="2_4qebp"]
 [ext_resource type="Texture2D" uid="uid://cbwyn73jlyd7c" path="res://Rooms/Art/BrickWall.png" id="3_4qebp"]
+[ext_resource type="Texture2D" uid="uid://d3iq7ukpf05bo" path="res://Rooms/Art/WoodenFloor.png" id="4_danwn"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2r0lw"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -289,6 +290,11 @@ texture_region_size = Vector2i(32, 32)
 11:2/0 = 0
 11:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_4qebp")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f6g1s"]
+texture = ExtResource("4_danwn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
@@ -299,3 +305,4 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_danwn")
 sources/1 = SubResource("TileSetAtlasSource_1xw4r")
 sources/2 = SubResource("TileSetAtlasSource_2ovc6")
+sources/3 = SubResource("TileSetAtlasSource_f6g1s")
