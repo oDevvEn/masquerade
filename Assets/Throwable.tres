@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ThrowItem" load_steps=3 format=3 uid="uid://cvgauthti5kwf"]
+
+[ext_resource type="Script" uid="uid://cp1so8augft74" path="res://Struct/ThrowItem.cs" id="1_wb58o"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wb58o"]
+
+[resource]
+script = ExtResource("1_wb58o")
+itemIcon = SubResource("CompressedTexture2D_wb58o")
+metadata/_custom_type_script = "uid://cp1so8augft74"

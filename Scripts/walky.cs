@@ -6,13 +6,13 @@ public partial class walky : CharacterBody2D
 	public int Speed { get; set; } = 150;
 	public float AudioMultiplier { get; set; } = 1f;
 
-	public InventorySlot inventory;     // inventory.Additem(Item)/.RemoveItem(index),
+	public PlayerInventory inventory;     // inventory.Additem(Item)/.RemoveItem(index),
 	// inventory made of like idk 5 slots, make a hotbar for items thats just an array ig
 	// 
 
 	public override void _Ready()
 	{
-		//inventory = GetNode<InventorySlot>("Inventory");
+		inventory = GetNode<Node>("Inventory") as PlayerInventory;
 	}                                                                
 	
 	public void GetInput()
@@ -65,6 +65,17 @@ public partial class walky : CharacterBody2D
 				timer.Start();
 		}
 
+		if (Input.IsActionJustPressed("UseItem")) // !!!!!!! isactionpressed isactionjustpressed isactionjustreleased &&& error check or something for wehtehr itemdata set in playerinv	
+		{
+			UseItem(1);
+		}
+
+	}
+
+	public void UseItem(int index)
+	{
+		Vector2 mousePos = GetGlobalMousePosition();
+		inventory.UseItem(index, this, mousePos); 
 	}
 
 	public override void _PhysicsProcess(double delta)

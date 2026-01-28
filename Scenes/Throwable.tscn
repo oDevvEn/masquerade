@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://brkia6dcibcfe"]
+
+[ext_resource type="Script" uid="uid://btblw213ehutp" path="res://Scenes/Throwable.cs" id="1_527fr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_527fr"]
+
+[node name="Throwable" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+script = ExtResource("1_527fr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_527fr")

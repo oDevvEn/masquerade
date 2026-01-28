@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class PlayerInventory : Node
 {
-	[Export] public int Size = 20;
+	[Export] public int Size = 4;
 
 	public List<InventorySlot> Slots = new();
 	
@@ -16,6 +16,8 @@ public partial class PlayerInventory : Node
 		{
 			Slots.Add(new InventorySlot());
 		}
+
+		Slots[1].ItemData = new Coin();
 	}
 	
 	
@@ -53,5 +55,13 @@ public partial class PlayerInventory : Node
 			// do something to drop into environment
 			
 		}
+	}
+
+	public void UseItem(int index, Node2D item, Vector2 targetPos)
+	{
+		var slot = Slots[index];
+		
+		slot.ItemData.Use(item, targetPos);
+		RemoveItem(index);
 	}
 }
