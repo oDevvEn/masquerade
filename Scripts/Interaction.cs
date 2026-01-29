@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Interaction : VBoxContainer
 {
@@ -12,6 +13,8 @@ public partial class Interaction : VBoxContainer
 	private Node2D previousNode;
 	private int selected;
 	private int maxSelected;
+	private RandomNumberGenerator rng;
+	private List<AudioStream> audioStreams;
 	
 	public override void _Ready() 
 	{
@@ -21,6 +24,9 @@ public partial class Interaction : VBoxContainer
 		player = (CharacterBody2D)GetParent().GetParent();
 		breathing = GetNode<ColorRect>("../Breathing") as Breathing;
 		camera = GetNode<Camera2D>("../../Camera2D");
+		rng = new RandomNumberGenerator();
+		audioStreams = new List<AudioStream>();
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://?????"));
 	}
 
 	
@@ -83,6 +89,8 @@ public partial class Interaction : VBoxContainer
 					bool open = (bool)previousNode.GetMeta("open");
 					previousNode.Rotate(open ? -Mathf.Pi / 2f : Mathf.Pi / 2f);
 					previousNode.SetMeta("open", !open);
+					AudioStreamPlayer2D audio = previousNode.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+					audio.Stream = audioStreams[rng.RandiRange(0, audioStreams.Count - 1)];
 					break;
 				}
 				case "Wardrobe":
