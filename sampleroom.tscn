@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bipl0rfpnd4u5"]
+[gd_scene load_steps=27 format=4 uid="uid://bipl0rfpnd4u5"]
 
 [ext_resource type="PackedScene" uid="uid://c4a5njexoyfhf" path="res://Scenes/player.tscn" id="1_te3jo"]
 [ext_resource type="TileSet" uid="uid://dd3ehn0lj5knm" path="res://Rooms/TileMap.tres" id="3_wivgg"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://b2sl32wmopf5l" path="res://Rooms/Art/dirt1.png" id="16_d7kvi"]
 [ext_resource type="Texture2D" uid="uid://igxnwguvrwhx" path="res://Rooms/Art/puddle.png" id="17_w1ao1"]
 [ext_resource type="Texture2D" uid="uid://dvnuosy51mh2r" path="res://Assets/Sprite-0011liught.png" id="18_d7kvi"]
+[ext_resource type="Texture2D" uid="uid://c35mtqsr86ott" path="res://Assets/Sprite-0008toitoilet.png" id="19_2jh8k"]
+[ext_resource type="Texture2D" uid="uid://cpv40n3no1xhh" path="res://Sprite-001pinetree0.png" id="20_t0jn5"]
+[ext_resource type="Texture2D" uid="uid://xke2hnnoudyy" path="res://Rooms/Art/Crate.png" id="21_5iimv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_elhgp"]
 vertices = PackedVector2Array(2000, 1739, 1360, 1739, -334.96875, 1579, -176, 1579, 2096, 715, 1872, 715, 1712, 683, 1872, 683, 1712, -213, 1712, -693, 1872, -566.03906, -464, -470, -464, -1205, -304, -693.3828, -304, -213, 3408, -1365, 3408, -181, 3248, -341, 3248, -1205, -304, -1365, -304, -1205, 2000, 1483, 1712, 1579, 1712, 843, 1872, 1195, -1359.3672, -949, -1359.6172, -981, -976, -981, -1232, -949, -1102.6172, -469, -1103.6172, -597, -688, -597, -688, -470, -2480, 1067, -2351.1875, 1067, -2351.8125, 1226, -2512.8672, 1226, -2512, 891.10156, -2480, 843, -2511.0703, 299, -1968, 299, -1968, 427, -2128, 843, 3120.6875, 171, 3120.1875, 43, 5295.633, 43, 5296, 203, 5297.289, -172, 6230.1563, -172, 6231.8438, 346, 5296, 346, 2896, 203, 2896, 171, 1919.9609, -981, 3023.0938, -980.03906, 3023.8984, -565.03906, 1712, -725, 689.1328, 427, 688.1328, 43, 1488, 43, 1072, 459, -1104, -2005.9688, 463.8672, -2005.0234, 463.1172, -1717, -48, -1717, -1104, -1716.8984, -593, -1715.9063, -48, -1589, -304, -1589, -336, -1590, -1712, 75.09375, -2128, 75.89844, -2128, -597, -1968, -342, 3152, 2123.0703, 2608, 2123.9219, 2608, 1611.3672, 3152, 1995, 2384, 2347, 3151.9531, 2347, 3151.0469, 3147, 1584, 3147, 2512, 554.46875, 2896, 554.0469, 2896, 1354, 2608, 971, -80, -725, -80, -981, 1488, -981, 1488, -725, 1712, -981, 1488, -693, 720, -437, 688, -437, 1488, -437, 2478.2578, 331, 2096, 331, 2096, -341, 2896, -341, 2896, -211.61719, 3120, -213.36719, 3120, -341, 2608, 1354, 2096, 971, 2481.7422, 554.52344, 48, -181.96875, 48, -213, 688, -213, 1712, -180.96875, -944, -981, -688, -981, -688, -821, -1232, -821, -944, -1205, -976, -1205, -1744, -597, -1584, -725, -1456, -725, -1456, -597, -1616, -565, -1328, -597, -1328, -469, -336.03125, -181, -176, -213, -176, 427, 304, 203, 48, 203, 48, 43, 464, 43, 464, 171, 592, 171, 592, 203, 336, 203, 304, 427, 336, 427, 2384, 1195, 2384, 1579, 2224, 1483, 3280, 1579, 3280, 1995, 2384, 1609.6172, 1584, 2347, 2224, 2347, 1488, 683, 1488, 843, 1488, 971, 1072, 971, 464, 459, 464, 683, 848, 683, 848, 971, 48, 971, 48, 683, 432, 683, 432, 459, -176, 459, 304, 1355, 48, 1355, 48, 1195, 720, 1195, 720, 1355, 336, 1355, 304, 1579, 336, 1579, -464, -181, -464, -437, -688, 43, -560, 43, -560, 203, -1104, 203, -688, -437, -1104, -437, -560, 427, -560, 843, -848, 843, -848, 459, -1328, 427, -1584, 459, -1359.0625, 683, -1072, 683, -1072, 843, -1328, 843, -1359.9375, 1355, -1328, 1067, -720, 1355, -560, 1067, -560, 1355, -688, 1355, -720, 1579, -688, 1579, 1360, 3147, 1200, 3147, 1200, 1739, -1744, 1739, -1584, 1579, -1744, 459.3672, -1744, 427, -1744, 299, -1488, 299, -1488, -437, -1616, -437, -1840, -342, -1840, -213, -1712, -213, -593, -1590, -336, -1365, 976.96875, 1962.9766, 976.03125, 3606, 559.96094, 3606, 558.96094, 2379, -1969.0313, 1961.9766, -2128, 2379, -1967.9688, 457.6172, -1328, -437, 2096, 683, 2096, 554.9375, 2896, -181, 2896, 330.1172, 2512, 331.1172, 720, -213, -79.1875, -437, -80.1875, -691.6328, -304, -725, -1744, -1365, -1584, -1205, -1968, -565)
@@ -886,5 +889,81 @@ position = Vector2(0.7999999, -0.8000031)
 scale = Vector2(0.28051278, 0.25798598)
 energy = 0.79
 texture = ExtResource("11_pa5jg")
+
+[node name="Sprite0008Toitoilet" type="Sprite2D" parent="."]
+position = Vector2(-1343, 698)
+scale = Vector2(4, 4)
+texture = ExtResource("19_2jh8k")
+
+[node name="Sprite0008Toitoilet2" type="Sprite2D" parent="."]
+position = Vector2(-710, -825)
+rotation = -3.1415927
+scale = Vector2(4, 4)
+texture = ExtResource("19_2jh8k")
+
+[node name="Sprite0008Toitoilet3" type="Sprite2D" parent="."]
+position = Vector2(2500, -321)
+scale = Vector2(4, 4)
+texture = ExtResource("19_2jh8k")
+
+[node name="Sprite001Pinetree0" type="Sprite2D" parent="."]
+position = Vector2(2901, 2593)
+scale = Vector2(6, 6)
+texture = ExtResource("20_t0jn5")
+
+[node name="Sprite001Pinetree1" type="Sprite2D" parent="."]
+position = Vector2(2699, 2796)
+rotation = -0.7853982
+scale = Vector2(6.062496, 6)
+texture = ExtResource("20_t0jn5")
+
+[node name="Crate" type="Sprite2D" parent="."]
+position = Vector2(2567, 76.000015)
+rotation = 0.034461655
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate2" type="Sprite2D" parent="."]
+position = Vector2(2723, 94)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate3" type="Sprite2D" parent="."]
+position = Vector2(2729, -49)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate4" type="Sprite2D" parent="."]
+position = Vector2(2431, 68)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate5" type="Sprite2D" parent="."]
+position = Vector2(2312, -22)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate6" type="Sprite2D" parent="."]
+position = Vector2(2590, -82)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate7" type="Sprite2D" parent="."]
+position = Vector2(2862, -49)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Crate8" type="Sprite2D" parent="."]
+position = Vector2(2454, -78)
+scale = Vector2(4, 4)
+texture = ExtResource("21_5iimv")
+
+[node name="Area2D2" type="StaticBody2D" parent="."]
+position = Vector2(2617, 3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D2"]
+polygon = PackedVector2Array(302, -104, 12, -147, -261, -133, -363, -79, -361, 34, -256, 75, -238, 120, 2, 134, 155, 149, 170, 38, 207, 9, 300, 6, 314, -77)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Area2D2"]
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnCollision"]
