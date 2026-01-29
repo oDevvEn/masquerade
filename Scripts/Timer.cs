@@ -12,6 +12,5 @@ public partial class Timer : Godot.Timer
 		GD.Print("HIII");
 		var range = GetNode<CollisionShape2D>("../AUDIOCUEarea/AUDIOCUE");
 		range.Disabled = true;
-		range = GetNode<CollisionShape2D>("../");
 	}
 }

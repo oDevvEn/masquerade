@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu13lyqup682j"]
+
+[ext_resource type="Script" uid="uid://2rsigllgm34s" path="res://Scenes/Dead.cs" id="1_6bsmv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6bsmv"]
+font_size = 96
+shadow_size = 2
+shadow_color = Color(0.57254905, 0, 0, 0.47058824)
+shadow_offset = Vector2(0, 3)
+
+[node name="Dead" type="ColorRect" node_paths=PackedStringArray("timePlayedLabel")]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_6bsmv")
+timePlayedLabel = NodePath("TimePlayed")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 712.5
+offset_top = 175.0
+offset_right = 1207.5
+offset_bottom = 350.0
+theme_override_font_sizes/font_size = 128
+text = "you ded"
+label_settings = SubResource("LabelSettings_6bsmv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimePlayed" type="Label" parent="."]
+layout_mode = 0
+offset_top = 400.0
+offset_right = 1920.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0.5152282, 0.5152282, 0.5152282, 1)
+theme_override_font_sizes/font_size = 36
+text = "Time played:
+a days, b months, c seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 694.5
+offset_top = 800.0
+offset_right = 1225.5
+offset_bottom = 940.0
+theme_override_font_sizes/font_size = 96
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="MainMenuButtonPressed"]

@@ -30,11 +30,14 @@ public partial class Coin : ItemData
 		coinSound.Stream.ResourcePath = "res://Assets/coin.mp3";
 		plr.GetParent().AddChild(coinSound);
 		coinSound.Play();
+		var soundArea = new Area2D();
+		soundArea.CollisionLayer = 0b100;
 		var sound = new CollisionShape2D();
 		sound.Shape = new CircleShape2D();
 		sound.Scale = new Vector2(50f, 50f);
 		sound.Name = "CoinAudio";
-		coinSprite.AddChild(sound);
+		soundArea.AddChild(sound);
+		coinSprite.AddChild(soundArea);
 		GD.Print("COllision on");
 		//System.Threading.Thread.Sleep(500); ///root/Sampleroom/@Sprite2D@2/CoinAudio
 								 // 

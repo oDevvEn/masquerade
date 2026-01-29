@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcob55sp3et1n"]
+
+[ext_resource type="Texture2D" uid="uid://cw15a601wknrr" path="res://Assets/Sprite-0009-Sheet.png" id="1_wovta"]
+[ext_resource type="Script" uid="uid://cc2dojak1tuse" path="res://Scripts/Badguy.cs" id="2_xeo28"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wovta"]
+
+[node name="Enemy" type="Sprite2D" groups=["Enemies"]]
+scale = Vector2(4, 4)
+texture = ExtResource("1_wovta")
+hframes = 7
+script = ExtResource("2_xeo28")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 16.0
+target_desired_distance = 64.0
+path_max_distance = 128.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -24)
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea2D"]
+position = Vector2(-4.75, 3.25)
+polygon = PackedVector2Array(2, -8.75, -3.5, -3.5, -7, -3.25, -10.5, -3.75, -12.5, -6, -12.5, -9.75, -7.75, -17.25, -2.5, -20.5, 20, -20.5, 21.75, -13.75, 14, -13.5, 9.25, -11.5)
+
+[node name="AudioArea2D" type="Area2D" parent="."]
+scale = Vector2(0.25, 0.25)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioArea2D"]
+shape = SubResource("CircleShape2D_wovta")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="AttackAreaEntered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="AttackAreaExited"]
