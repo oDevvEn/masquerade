@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj6oiek5btew2"]
+
+[ext_resource type="Texture2D" uid="uid://b8knen4642kgh" path="res://Assets/Sprite-0005FRIDGE.png" id="1_6ffs8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpg8r"]
+size = Vector2(22, 18)
+
+[node name="Fridge" type="Sprite2D"]
+texture = ExtResource("1_6ffs8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_qpg8r")

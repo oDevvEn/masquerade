@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bpyg6yrja2k55"]
+
+[node name="End" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 394.0
+offset_bottom = 168.0
+text = "You win yayayayaya"
