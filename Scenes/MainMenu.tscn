@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://pyoi527uxg8g"]
+[gd_scene load_steps=5 format=3 uid="uid://pyoi527uxg8g"]
 
 [ext_resource type="Texture2D" uid="uid://cjin6qf60ytgp" path="res://Assets/MainMenuBGblur.png" id="1_853f1"]
 [ext_resource type="Script" uid="uid://cjdve34e6bptl" path="res://Scenes/MainMenu.cs" id="1_tt5f1"]
+[ext_resource type="AudioStream" uid="uid://ctw7i0gs8ahlm" path="res://Assets/mainmenutheme.mp3" id="3_8saeu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8saeu"]
 font_size = 96
@@ -60,6 +61,11 @@ offset_bottom = 1008.0
 theme_override_font_sizes/font_size = 76
 text = "Quit"
 icon_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8saeu")
+autoplay = true
+parameters/looping = true
 
 [connection signal="button_up" from="PlayButton" to="." method="PlayButtonPressed"]
 [connection signal="button_up" from="QuitButton" to="." method="QuitButtonPressed"]
