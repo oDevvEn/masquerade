@@ -54,7 +54,7 @@ public partial class Badguy : Sprite2D
 		parameters.Exclude = new Array<Rid>([this, player]);
 
 		if (Mathf.Abs((-Transform.Y).AngleTo(player.Position-Position)) < visionField &&
-			(player.Position - Position).Length() < visionRange && GetWorld2D().DirectSpaceState.IntersectRay(parameters).Count == 0)
+			(player.Position - Position).Length() < visionRange && GetWorld2D().DirectSpaceState.IntersectRay(parameters).Count == 0 && player.Visible)
 		{
 			lastSeemTimee = Time.GetUnixTimeFromSystem();
 		}

@@ -4,11 +4,11 @@
 [ext_resource type="TileSet" uid="uid://dd3ehn0lj5knm" path="res://Rooms/TileMap.tres" id="3_wivgg"]
 [ext_resource type="PackedScene" uid="uid://6yfqspgdtufc" path="res://Rooms/Furniture/door.tscn" id="4_62ttd"]
 [ext_resource type="Texture2D" uid="uid://c12spfv7j6mlo" path="res://Assets/LightCOne.jpg" id="4_ses0e"]
-[ext_resource type="PackedScene" path="res://Scenes/Enemy.tscn" id="5_x8cdc"]
+[ext_resource type="PackedScene" uid="uid://dcob55sp3et1n" path="res://Scenes/Enemy.tscn" id="5_x8cdc"]
 [ext_resource type="PackedScene" uid="uid://cyj0n36ckhd12" path="res://Rooms/Furniture/wardrobe.tscn" id="8_k4fil"]
 [ext_resource type="PackedScene" uid="uid://dx16si00uovjx" path="res://Rooms/Furniture/Lamp.tscn" id="8_pnscv"]
 [ext_resource type="Texture2D" uid="uid://b4u12ysfapysb" path="res://Rooms/Art/RedBed.png" id="9_behxx"]
-[ext_resource type="PackedScene" uid="uid://bkqm7s5tp5el" path="res://Rooms/Furniture/Table.tscn" id="10_n1iw4"]
+[ext_resource type="PackedScene" path="res://Rooms/Furniture/Table.tscn" id="10_n1iw4"]
 [ext_resource type="Texture2D" uid="uid://durlhmxh6a4sd" path="res://Rooms/Art/Sprite-rug.png" id="11_n1iw4"]
 [ext_resource type="Texture2D" uid="uid://xcfmed7t0nti" path="res://Assets/LightSprite.png" id="11_pa5jg"]
 [ext_resource type="Texture2D" uid="uid://dx0r3r0tejsmw" path="res://Rooms/Art/plaindoor.png" id="12_xsfbv"]
@@ -63,6 +63,7 @@ position = Vector2(576, 128)
 rotation = 1.5707964
 
 [node name="Player" parent="." instance=ExtResource("1_te3jo")]
+z_index = 5
 position = Vector2(99, 162)
 
 [node name="PointLight2D" type="PointLight2D" parent="Player"]
