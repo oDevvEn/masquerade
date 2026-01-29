@@ -7,6 +7,7 @@ public partial class Breathing : ColorRect
 	private ColorRect selector;
 	private RandomNumberGenerator randamiser;
 	private CharacterBody2D player;
+	private CollisionShape2D audio;
 	private Camera2D playerCamera;
 	public Camera2D wardrobeCamera;
 	public AudioStreamPlayer2D breathingAudio;
@@ -16,7 +17,26 @@ public partial class Breathing : ColorRect
 	private float selectorVelocity = 500f;
 	private float areaPos = 0f;
 	private float areaWidth = 576f;
+	private double lastBreath;
 
+
+	public void Breathe()
+	{
+		breathing = true;
+		lastBreath = Time.GetUnixTimeFromSystem();
+	}
+
+	private void Breathenot()
+	{
+		Visible = false;
+		player.Visible = true;
+		breathing = false;
+		wardrobeCamera.Enabled = false;
+		playerCamera.Enabled = true;
+		audio.Position = Vector2.Zero;
+		breathingAudio.Stop();
+	}
+	
 	
 	public override void _Ready()
 	{
@@ -24,6 +44,7 @@ public partial class Breathing : ColorRect
 		selector = GetNode<ColorRect>("Selector");
 		randamiser = new RandomNumberGenerator();
 		player = (CharacterBody2D)GetParent().GetParent();
+		audio = player.GetNode<CollisionShape2D>("AUDIOCUEarea/AUDIOCUE");
 		selector.Position = new Vector2(randamiser.RandfRange(0f, 568f), 0f);
 		playerCamera = player.GetNode<Camera2D>("Camera2D");
 		breathingAudio = player.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D2");
@@ -33,6 +54,11 @@ public partial class Breathing : ColorRect
 	public override void _Process(double delta)
 	{
 		if (!breathing) return;
+
+		if (Time.GetUnixTimeFromSystem() - lastBreath > 2.5D)
+		{
+			Breathenot();
+		}
 
 		selector.Position += new Vector2((float)delta * selectorVelocity, 0f);
 		if (selector.Position.X > 568f || selector.Position.X < 0f)
@@ -45,17 +71,9 @@ public partial class Breathing : ColorRect
 		{
 			float distance = Mathf.Abs(selector.Position.X + 5f - (areaPos + areaWidth / 2f)) / (areaWidth + 16f);
 			GD.Print(distance);
-			var audio = player.GetNode<CollisionShape2D>("AUDIOCUEarea/AUDIOCUE");
 			if (distance > 1f)
 			{
-				Visible = false;
-				player.Visible = true;
-				breathing = false;
-				wardrobeCamera.Enabled = false;
-				playerCamera.Enabled = true;
-				audio.Position = Vector2.Zero;
-				breathingAudio.Stop();
-				
+				Breathenot();
 
 			}
 			else
@@ -74,6 +92,7 @@ public partial class Breathing : ColorRect
 			areaVisual.Size = new Vector2(areaWidth, 40f);
 			areaPos = randamiser.RandfRange(0f, 576f - areaWidth);
 			areaVisual.Position = new Vector2(areaPos, 0f);
+			lastBreath = Time.GetUnixTimeFromSystem();
 		}
 	}
 }

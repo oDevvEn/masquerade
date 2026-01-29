@@ -127,8 +127,10 @@ public partial class Badguy : Sprite2D
 		{
 			Array<Area2D> audioCues = audioArea.GetOverlappingAreas();
 			if (audioCues.Count > 0)
+			{
 				GD.Print(audioCues);
 				navAgent.TargetPosition = audioCues[0].GlobalPosition;
+			}
 		}
 	}
 
@@ -141,5 +143,13 @@ public partial class Badguy : Sprite2D
 	public void AttackAreaExited(Node2D body)
 	{
 		playerInAttack = false;
+	}
+
+	public void RoamTimeout()
+	{
+		if (navAgent.IsNavigationFinished())
+		{
+			navAgent.TargetPosition = NavigationServer2D.MapGetRandomPoint(navAgent.GetNavigationMap(), 1, true);
+		}
 	}
 }
