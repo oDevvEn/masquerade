@@ -12,6 +12,7 @@ public partial class Badguy : Sprite2D
 	private NavigationAgent2D navAgent;
 	private RayCast2D raycast;
 	private Area2D audioArea;
+	private AudioStreamPlayer2D audio;
 	
 	private double lastSeemTimee;
 	private bool animate;
@@ -25,6 +26,7 @@ public partial class Badguy : Sprite2D
 		navAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
 		raycast = GetNode<RayCast2D>("RayCast2D");
 		audioArea = GetNode<Area2D>("AudioArea2D");
+		audio = player.GetNode<AudioStreamPlayer2D>("ChaseAudio");
 		Callable.From(ActorSetup).CallDeferred();
 	}
 
@@ -128,9 +130,12 @@ public partial class Badguy : Sprite2D
 			Array<Area2D> audioCues = audioArea.GetOverlappingAreas();
 			if (audioCues.Count > 0)
 			{
-				GD.Print(audioCues);
 				navAgent.TargetPosition = audioCues[0].GlobalPosition;
 			}
+		}
+		else if (!audio.Playing)
+		{
+			audio.Play();
 		}
 	}
 
