@@ -8,6 +8,12 @@ public partial class Dead : ColorRect
 	[Export] private Label timePlayedLabel;
 	public override void _Ready()
 	{
+		var death = new AudioStreamPlayer();
+		death.Stream = ResourceLoader.Load<AudioStream>("res://Assets/death.mp3");
+		AddChild(death);
+		death.Play();
+			
+		
 		int[] times = new int[3];
 		double timePlayed = Time.GetUnixTimeFromSystem() - startTime;
 		times[0] = (int)(timePlayed % 60);
