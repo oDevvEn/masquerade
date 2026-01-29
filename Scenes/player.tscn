@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4a5njexoyfhf"]
+[gd_scene load_steps=12 format=3 uid="uid://c4a5njexoyfhf"]
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bnvp76up0kb12" path="res://Assets/Sprite-0002.png" id="2_fkybt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dh8ammpyxecbg" path="res://Scripts/Interaction.cs" id="4_vgqql"]
 [ext_resource type="Script" uid="uid://bei2t1kqut48t" path="res://Struct/PlayerInventory.cs" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://0rkgopiqfjve" path="res://Scripts/Breathing.cs" id="5_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://g1we12b7fi4n" path="res://Scenes/UIHotbar.tscn" id="6_3smsa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3wgy"]
 radius = 24.45
@@ -81,7 +82,9 @@ offset_right = 8.0
 offset_bottom = 40.0
 color = Color(1, 0, 0, 1)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="CanvasLayer"]
+[node name="UiHotbar" parent="CanvasLayer" instance=ExtResource("6_3smsa")]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 
 [node name="AUDIOCUEarea" type="Area2D" parent="."]
 collision_layer = 0
@@ -92,5 +95,6 @@ disabled = true
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("5_fkybt")
+HotbarPath = NodePath("../CanvasLayer/UiHotbar")
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]

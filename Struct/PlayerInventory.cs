@@ -9,13 +9,13 @@ public partial class PlayerInventory : Node
 	public List<InventorySlot> Slots = new();
 	
 	[Export] public NodePath HotbarPath;
-	private HBoxContainer hotbar;
+	private UiHotbar hotbar;
 	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		hotbar = GetNode<HBoxContainer>(HotbarPath);
+		hotbar = GetNode<Control>(HotbarPath) as UiHotbar;
 		
 		for (int i = 0; i < Size; i++)
 		{
@@ -27,6 +27,7 @@ public partial class PlayerInventory : Node
 		Slots[1].ItemData = new Coin();
 
 		//UpdateHotbarUI();
+		hotbar.UpdateUI();
 	}
 	
 	

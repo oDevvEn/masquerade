@@ -7,6 +7,13 @@ using Godot;
 
 public partial class Coin : ItemData
 {
+	public Coin()
+	{
+		itemName = "Coin";
+		itemDescription = "A coin to distract someone, looks weird.";
+		itemIcon = ResourceLoader.Load<CompressedTexture2D>("res://Assets/Sprite-0001.png");
+	}
+	
 	public async override void Use(Node2D plr, Vector2 targetPos)
 	{
 		//var range = plr.GetNode<CollisionShape2D>("AUDIOCUEarea/AUDIOCUE"); // !!!!!!!!! look at the player scene
