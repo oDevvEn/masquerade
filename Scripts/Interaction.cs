@@ -26,7 +26,13 @@ public partial class Interaction : VBoxContainer
 		camera = GetNode<Camera2D>("../../Camera2D");
 		rng = new RandomNumberGenerator();
 		audioStreams = new List<AudioStream>();
-		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://?????"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak1.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak2.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak3.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak4.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak5.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak6.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak7.mp3"));
 	}
 
 	
@@ -91,6 +97,7 @@ public partial class Interaction : VBoxContainer
 					previousNode.SetMeta("open", !open);
 					AudioStreamPlayer2D audio = previousNode.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 					audio.Stream = audioStreams[rng.RandiRange(0, audioStreams.Count - 1)];
+					audio.Play();
 					break;
 				}
 				case "Wardrobe":

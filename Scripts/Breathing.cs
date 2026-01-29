@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Breathing : ColorRect
 {
@@ -11,6 +12,8 @@ public partial class Breathing : ColorRect
 	private Camera2D playerCamera;
 	public Camera2D wardrobeCamera;
 	public AudioStreamPlayer2D breathingAudio;
+	private RandomNumberGenerator rng;
+	private List<AudioStream> audioStreams;
 	
 	
 	public bool breathing = false;
@@ -24,6 +27,7 @@ public partial class Breathing : ColorRect
 	{
 		breathing = true;
 		lastBreath = Time.GetUnixTimeFromSystem();
+		BeLoud();
 	}
 
 	private void Breathenot()
@@ -35,6 +39,14 @@ public partial class Breathing : ColorRect
 		playerCamera.Enabled = true;
 		audio.Position = Vector2.Zero;
 		breathingAudio.Stop();
+		BeLoud();
+	}
+
+	public void BeLoud()
+	{
+		AudioStreamPlayer2D creakAudio = wardrobeCamera.GetNode<AudioStreamPlayer2D>("../AudioStreamPlayer2D");
+		creakAudio.Stream = audioStreams[rng.RandiRange(0, audioStreams.Count - 1)];
+		creakAudio.Play();
 	}
 	
 	
@@ -48,6 +60,16 @@ public partial class Breathing : ColorRect
 		selector.Position = new Vector2(randamiser.RandfRange(0f, 568f), 0f);
 		playerCamera = player.GetNode<Camera2D>("Camera2D");
 		breathingAudio = player.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D2");
+		
+		rng = new RandomNumberGenerator();
+		audioStreams = new List<AudioStream>();
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak1.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak2.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak3.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak4.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak5.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak6.mp3"));
+		audioStreams.Add(ResourceLoader.Load<AudioStream>("res://Assets/doorcreak7.mp3"));
 	}
 	
 	

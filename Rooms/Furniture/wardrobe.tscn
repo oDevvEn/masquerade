@@ -18,3 +18,5 @@ shape = SubResource("RectangleShape2D_qy74y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
