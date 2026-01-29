@@ -26,9 +26,8 @@ public partial class Coin : ItemData
 		coinSprite.GlobalPosition = targetPos;
 		plr.GetParent().AddChild(coinSprite);
 		var coinSound = new AudioStreamPlayer2D();
-		coinSound.Stream = new AudioStream();
-		coinSound.Stream.ResourcePath = "res://Assets/coin.mp3";
-		plr.GetParent().AddChild(coinSound);
+		coinSound.Stream = ResourceLoader.Load<AudioStream>("res://Assets/coin.mp3");
+		coinSprite.AddChild(coinSound);
 		coinSound.Play();
 		var soundArea = new Area2D();
 		soundArea.CollisionLayer = 0b100;
