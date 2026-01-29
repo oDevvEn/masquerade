@@ -25,6 +25,11 @@ public partial class Coin : ItemData
 		coinSprite.Texture = coinResource;
 		coinSprite.GlobalPosition = targetPos;
 		plr.GetParent().AddChild(coinSprite);
+		var coinSound = new AudioStreamPlayer2D();
+		coinSound.Stream = new AudioStream();
+		coinSound.Stream.ResourcePath = "res://Assets/coin.mp3";
+		plr.GetParent().AddChild(coinSound);
+		coinSound.Play();
 		var sound = new CollisionShape2D();
 		sound.Shape = new CircleShape2D();
 		sound.Scale = new Vector2(50f, 50f);

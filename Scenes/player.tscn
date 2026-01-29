@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4a5njexoyfhf"]
+[gd_scene load_steps=14 format=3 uid="uid://c4a5njexoyfhf"]
 
 [ext_resource type="Script" uid="uid://dkq8j8ierb3b" path="res://Scripts/walky.cs" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bnvp76up0kb12" path="res://Assets/Sprite-0002.png" id="2_fkybt"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bei2t1kqut48t" path="res://Struct/PlayerInventory.cs" id="5_fkybt"]
 [ext_resource type="Script" uid="uid://0rkgopiqfjve" path="res://Scripts/Breathing.cs" id="5_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://g1we12b7fi4n" path="res://Scenes/UIHotbar.tscn" id="6_3smsa"]
+[ext_resource type="AudioStream" uid="uid://cyoupekbohpai" path="res://Assets/foot.mp3" id="8_8erm5"]
+[ext_resource type="AudioStream" uid="uid://c4rl001x5gokc" path="res://Assets/breath.mp3" id="9_f1ek2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x3wgy"]
 radius = 24.45
@@ -96,5 +98,11 @@ disabled = true
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("5_fkybt")
 HotbarPath = NodePath("../CanvasLayer/UiHotbar")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_8erm5")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_f1ek2")
 
 [connection signal="timeout" from="Timer" to="Timer" method="_on_timer_timeout"]

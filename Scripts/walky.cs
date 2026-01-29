@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class walky : CharacterBody2D
 {
@@ -8,6 +9,7 @@ public partial class walky : CharacterBody2D
 
 	private Breathing breathing;
 	public PlayerInventory inventory;     // inventory.Additem(Item)/.RemoveItem(index),
+	public AudioStreamPlayer2D audio;
 	// inventory made of like idk 5 slots, make a hotbar for items thats just an array ig
 	//  
 
@@ -75,11 +77,13 @@ public partial class walky : CharacterBody2D
 	{
 		breathing = GetNode<ColorRect>("CanvasLayer/Breathing") as Breathing;
 		inventory = GetNode<Node>("Inventory") as PlayerInventory;
+		audio = GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
 	}                                                                
 	
 	public void GetInput()
 	{
 		LookAt(GetGlobalMousePosition());
+		
 		Vector2 inputDirection = Input.GetVector("left", "right", "forward", "back");
 		//GD.Print(Transform.X.AngleTo(inputDirection));
 		float speedSlow = Math.Clamp((Speed / 1.5f), 0, 150);
@@ -107,6 +111,7 @@ public partial class walky : CharacterBody2D
 			currentSpeed = Speed;
 			Velocity = inputDirection * Speed;    
 		}
+		
 			
 		
 		//GD.Print(Math.Clamp((Speed/3f/SpeedMulti), 0, 400));
@@ -114,17 +119,24 @@ public partial class walky : CharacterBody2D
 		
 		
 
-		if (Input.IsActionPressed("forward")
-			|| Input.IsActionPressed("back")
-				|| Input.IsActionPressed("left")
-					|| Input.IsActionPressed("right"))
+		if (Input.IsActionJustPressed("forward")
+			|| Input.IsActionJustPressed("back")
+				|| Input.IsActionJustPressed("left")
+					|| Input.IsActionJustPressed("right"))
 		{
+			audio.Play();
 			var range = GetNode<CollisionShape2D>("AUDIOCUEarea/AUDIOCUE");
 			range.Scale = new Vector2(this.Scale.X * currentSpeed /5, this.Scale.Y * currentSpeed /5);
 			range.Disabled = false;
 			var timer = GetNode<Timer>("Timer");
 			if (timer.IsStopped())
 				timer.Start();
+
+			
+
+
+
+
 		}
 
 		if (Input.IsActionJustPressed("UseItem")) // !!!!!!! isactionpressed isactionjustpressed isactionjustreleased &&& error check or something for wehtehr itemdata set in playerinv	
@@ -142,7 +154,8 @@ public partial class walky : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-
+		if (Velocity.Equals(Vector2.Zero))
+			audio.Stop();
 		if (!breathing.breathing)
 		{
 			GetInput();

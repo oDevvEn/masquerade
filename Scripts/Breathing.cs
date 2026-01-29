@@ -9,6 +9,7 @@ public partial class Breathing : ColorRect
 	private CharacterBody2D player;
 	private Camera2D playerCamera;
 	public Camera2D wardrobeCamera;
+	public AudioStreamPlayer2D breathingAudio;
 	
 	
 	public bool breathing = false;
@@ -25,6 +26,7 @@ public partial class Breathing : ColorRect
 		player = (CharacterBody2D)GetParent().GetParent();
 		selector.Position = new Vector2(randamiser.RandfRange(0f, 568f), 0f);
 		playerCamera = player.GetNode<Camera2D>("Camera2D");
+		breathingAudio = player.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D2");
 	}
 	
 	
@@ -52,11 +54,14 @@ public partial class Breathing : ColorRect
 				wardrobeCamera.Enabled = false;
 				playerCamera.Enabled = true;
 				audio.Position = Vector2.Zero;
+				breathingAudio.Stop();
+				
 
 			}
 			else
 			{
 				// logic
+				breathingAudio.Play();
 				audio.Disabled = false;
 				audio.Scale = new Vector2(50 * distance , 50 * distance);
 				audio.GlobalPosition = GetTree().CurrentScene.GetNode<Sprite2D>("Wardrobe").GlobalPosition;
