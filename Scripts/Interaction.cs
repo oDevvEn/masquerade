@@ -92,7 +92,7 @@ public partial class Interaction : VBoxContainer
 					Camera2D wardrobeCamera = previousNode.GetNode<Camera2D>("Camera2D");
 					breathing.wardrobeCamera = wardrobeCamera;
 					wardrobeCamera.Enabled = true;
-					breathing.breathing = true;
+					breathing.Breathe();
 					breathing.Visible = true;
 					break;
 				}
